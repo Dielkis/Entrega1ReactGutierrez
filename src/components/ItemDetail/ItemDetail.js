@@ -1,6 +1,24 @@
 import ItemCount from "../ItemCount/ItemCount";
+import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
-const ItemDetail = ({ name, img, category, description, price, stock }) => {
+const ItemDetail = ({id, name, img, category, description, price, stock }) => {
+
+    const [quantityAdded, setQuantityAdded] = useState(0)
+
+    const { addItem } = useContext(CartContext)
+
+
+    const handleOnAdd = (quantity) => {
+        setQuantityAdded(quantity)
+
+        const item = {
+            id, name, price
+        }
+        addItem(item, quantity)
+    }
+
     return (
         <div className="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xl-2 text-center pt-2">
             <div className="card">
@@ -12,7 +30,14 @@ const ItemDetail = ({ name, img, category, description, price, stock }) => {
                     <p className="card-tex">Precio: {price}</p>
                     <p className="card-tex">Stock: {stock}</p>
                     <footer>
-                        <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log("Cantidad Agregada", quantity)} />
+                        {
+                            quantityAdded > 0 ? (
+                                <Link to='/cart' className="Option">Terminar compra</Link>
+                            ) : (
+                                <ItemCount initial={1} stock={10} onAdd={handleOnAdd} />
+                            )
+                        }
+
                     </footer>
                 </div>
             </div>
