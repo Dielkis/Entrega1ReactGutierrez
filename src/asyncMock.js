@@ -61,7 +61,7 @@ const products = [
         category: "cafe",
         img:"https://plus.unsplash.com/premium_photo-1663853490794-abce4ea7e3db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
         stock: 10,
-        description: "..."
+        description: "También puedes preparar este café helado usando crema de avellana y chocolate"
 
     }
 ]
